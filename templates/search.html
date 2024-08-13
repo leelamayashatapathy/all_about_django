@@ -1,0 +1,61 @@
+{% extends 'base.html'%} {% block content %}
+
+<div class="container-fluid">
+  <form class="form-inline">
+    <div class="container col-6">
+      <input value="{{search}}"
+        class="form-control col-6"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        name='search'
+      />
+      <div class="form-group col-md-4">
+        <label for="inputState">Age</label>
+        <select id="inputState" class="form-control" name="age">
+          <option selected>Choose...</option>
+          <option value="1">18-25</option>
+          <option value="2">25-30</option>
+          <option value="3">30-35</option>
+        </select>
+      </div>
+      <button class="btn btn-outline-success mt-2" type="submit">
+        Search
+      </button>
+    </div>
+  </form>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Gender</th>
+        <th scope="col">College</th>
+        <th scope="col">CollegeAddress</th>
+        <th scope="col">Age</th>
+        <th scope="col">Dob</th>
+        <th scope="col">Bio</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for student in students %}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td>{{student.name}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.phone}}</td>
+        <td>{{student.gender}}</td>
+        <td>{{student.college.college_name}}</td>
+        <td>{{student.college.college_address}}</td>
+        <td>{{student.age}}</td>
+        <td>{{student.dob}}</td>
+        <td>{{student.bio}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html'%} 
+{% block content %}
+
+<form  method="post" enctype="multipart/form-data">
+   {% csrf_token %}
+{{form.as_p}}
+<button type="submit">Submit</button>
+</form>
+   <!-- <h1>How to render HTML Template</h1>
+   <h2>It's Homepage Baby!</h2> 
+   <a href="/api/contact/">Go for Contact Page</a> -->
+{% endblock %}

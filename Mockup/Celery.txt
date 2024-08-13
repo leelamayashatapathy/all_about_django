@@ -1,0 +1,66 @@
+pip install celery
+
+proj/celery.py(CREATE A CELERY.PY FILE IN PROJECTS)
+
+import os
+
+from celery import Celery
+
+# Set the default Django settings module for the 'celery' program.
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'proj.settings')
+
+app = Celery('proj')
+
+# Using a string here means the worker doesn't have to serialize
+# the configuration object to child processes.
+# - namespace='CELERY' means all celery-related configuration keys
+#   should have a `CELERY_` prefix.
+app.config_from_object('django.conf:settings', namespace='CELERY')
+
+# Load task modules from all registered Django apps.
+app.autodiscover_tasks()
+
+
+@app.task(bind=True, ignore_result=True)
+def debug_task(self):
+    print(f'Request: {self.request!r}')
+
+
+
+gofor PROJECT __init__.py file
+
+from .celery import app as celery_app
+
+__all__ = ('celery_app',)
+
+
+
+SETTINGS.PY FILE
+
+CELERY_BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+
+
+
+
+
+Create a tasks.py file in app where task is required
+
+from celery import shared_task
+
+
+@shared_task
+def add(x, y):
+    return x + y
+
+
+install pip install eventlet(windows user)
+
+
+for execution
+celery -A webscrapper worker -l info -P eventlet
+

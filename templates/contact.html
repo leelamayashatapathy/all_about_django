@@ -1,0 +1,65 @@
+{% extends 'base.html'%} {% block content %}
+
+<!-- <h1>This is Contact page Baby!</h1>
+<p>{{names}}</p> -->
+<!-- {% for name in names %} {% if not name == 'ram' %}
+<ul>
+  <li><h1>{{name}}</h1></li>
+</ul>
+{% endif %} {% endfor %} -->
+
+<!-- float formating in template -->
+
+<!-- {{value}} -->
+<!-- {{form.as_p}} -->
+
+<!-- Contact form -->
+ <div  class="d-flex align-items-center justify-content-center">
+<form action="" method="post" style="width: 26rem">
+  {% csrf_token %}
+    <!-- Name input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <input type="text" id="form4Example1" class="form-control" name="name" />
+      <label class="form-label" for="form4Example1">Name</label>
+    </div>
+
+    <!-- Email input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <input type="email" id="form4Example2" class="form-control" name="email"/>
+      <label class="form-label" for="form4Example2">Email address</label>
+    </div>
+
+    <!-- Message input -->
+    <div data-mdb-input-init class="form-outline mb-4">
+      <textarea class="form-control" id="form4Example3" rows="4" name="message"></textarea>
+      <label class="form-label" for="form4Example3">Message</label>
+    </div>
+
+    <!-- Checkbox -->
+    <div class="form-check d-flex justify-content-center mb-4">
+      <input
+        class="form-check-input me-2"
+        type="checkbox"
+        value=""
+        id="form4Example4"
+        checked
+      />
+      <label class="form-check-label" for="form4Example4">
+        Send me a copy of this message
+      </label>
+    </div>
+
+    <!-- Submit button -->
+    <button
+      data-mdb-ripple-init
+      type="submit"
+      class="btn btn-primary btn-block mb-4"
+    >
+      Send
+    </button>
+</form>
+</div>
+
+<a href="/api/home/">Go for Homepage</a>
+
+{% endblock %}

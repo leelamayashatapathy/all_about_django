@@ -1,0 +1,7 @@
+Fugginss-
+if there is any spelling mistake in search then it will give the related search
+lets say someone search for fashion product and that user search as fasion then it will send thedata 
+of fashion related project
+
+search vector
+search rank

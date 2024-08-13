@@ -1,0 +1,8 @@
+we have to create a field in model called is_delete or whatever we can name it then after we can make it true or false
+we have to override a modelmanager function 
+
+
+wehave to override a manager function
+class DeleteManager(models.Manager)
+    def get_queryset(self)-> models.Queryset:
+        return super().get_queryset().filter(is_delete = False)
